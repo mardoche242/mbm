@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - Le-Trio</title>
+    <style>
+        :root {
+            --primary-color: #0104b6; /* Vert forestier */
+            --secondary-color: #000597; /* Vert foncé */
+            --accent-color: #FFD700; /* Or */
+            --light-color: #F5F5F5;
+            --text-color: #333333;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background-color: var(--light-color);
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+        
+        .slogan {
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+        
+        .about-section {
+            padding: 80px 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .founders-section {
+            background-color: white;
+            padding: 60px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+        
+        .founders-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .founder-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary-color);
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .founder-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .founder-card:hover .founder-image img {
+            transform: scale(1.05);
+        }
+        
+        .founder-info {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .founder-name {
+            margin: 0;
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+        }
+        
+        .founder-role {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .founder-bio {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .values-section {
+            margin-top: 80px;
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--accent-color);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .value-title {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+        
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            header {
+                padding: 60px 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo"><Trio-Store></Trio-Store></div>
+            <h1>Notre Histoire</h1>
+            <p class="slogan">Innovation, Excellence, Engagement</p>
+        </div>
+    </header>
+    
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Qui sommes-nous ?</h2>
+                    <p>Fondée en Mai 2025 par trois visionnaires congolais, Le-Trio s'est rapidement imposée comme un acteur majeur dans son secteur d'activité. Notre entreprise incarne les valeurs d'excellence, d'innovation et d'engagement envers le développement économique du Congo.</p>
+                    <p>Née d'une vision commune et d'une passion partagée pour l'entrepreneuriat, Le-Trio représente l'union des compétences et des ambitions de ses trois fondateurs : MOULOUNDOU, MBENZANGOYI et KIBIDI.</p>
+                    <p>Aujourd'hui, Le-Trio compte plusieurs dizaines d'employés et continue de croître, portée par sa mission de fournir des solutions adaptées aux besoins du marché congolais.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Équipe MKM Congo">
+                </div>
+            </div>
+            
+            <div class="founders-section">
+                <h2 class="section-title">Les Fondateurs</h2>
+                <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">Ces trois leaders exceptionnels ont uni leurs forces pour créer une entreprise qui marquera l'histoire économique du Congo</p>
+                
+                <div class="founders-grid">
+                    <!-- Fondateur 1 -->
+                    <div class="founder-card">
+                        <div class="founder-image">
+                            <img src="images/WhatsApp Image 2025-03-05 à 20.11.08_34253508.jpg" alt="MOULOUNDOU">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">MOULOUNDOU</h3>
+                            <p class="founder-role">Co-Fondateur & PDG</p>
+                            <p class="founder-bio">Visionnaire et stratège, MOULOUNDOU apporte son expertise en gestion d'entreprise et son réseau international pour guider Le-Trio vers l'excellence.</p>
+                            <div class="social-links">
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fondateur 2 -->
+                    <div class="founder-card">
+                        <div class="founder-image">
+                            <img src="images/Mardo.jpg" alt="MBENZANGOYI">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">MBENZANGOYI</h3>
+                            <p class="founder-role">Co-Fondateur & Directeur Technique</p>
+                            <p class="founder-bio">Expert dans son domaine, MBENZANGOYI assure l'innovation technologique et la qualité des solutions proposées par Le-Trio.</p>
+                            <div class="social-links">
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fab fa-github"></i></a>
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fas fa-globe"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fondateur 3 -->
+                    <div class="founder-card">
+                        <div class="founder-image">
+                            <img src="images/keumiel.jpg" alt="KIBIDI">
+                        </div>
+                        <div class="founder-info">
+                            <h3 class="founder-name">KIBIDI</h3>
+                            <p class="founder-role">Co-Fondateur & Directeur des Opérations</p>
+                            <p class="founder-bio">Gestionnaire hors pair, KIBIDI optimise les processus et assure le bon fonctionnement quotidien de l'entreprise.</p>
+                            <div class="social-links">
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" style="color: var(--secondary-color); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="values-section">
+                <h2 class="section-title">Nos Valeurs</h2>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="value-title">Innovation</h3>
+                        <p>Nous repoussons constamment les limites pour apporter des solutions avant-gardistes à nos clients.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="value-title">Intégrité</h3>
+                        <p>Nous menons nos affaires avec transparence, honnêteté et respect pour tous nos partenaires.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="value-title">Communauté</h3>
+                        <p>Nous nous engageons à contribuer positivement au développement économique et social du Congo.</p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="value-title">Excellence</h3>
+                        <p>Nous visons l'excellence dans tout ce que nous entreprenons, sans compromis sur la qualité.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3>Le-Trio</h3>
+            <p>Innovation au service du développement</p>
+            <p>&copy; 2025 Trio-Store. Tous droits réservés.</p>
+        </div>
+    </footer>
+</body>
+</html>

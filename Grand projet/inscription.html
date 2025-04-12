@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription - MKM Congo</title>
+    <style>
+        :root {
+            --primary-color: #2E8B57; /* Vert Congo */
+            --secondary-color: #1E3A1E; /* Vert foncé */
+            --accent-color: #FFD700; /* Or */
+            --light-color: #F5F5F5;
+            --text-color: #333;
+            --error-color: #DC3545;
+            --success-color: #28A745;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-image: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
+                              url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+        }
+
+        .error-message {
+            color: var(--error-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .login-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            text-align: center;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .password-strength {
+            margin-top: 5px;
+            height: 5px;
+            background-color: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                margin-top: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Trio-Store</div>
+            <h2>Créer un compte</h2>
+            <p>Rejoignez notre communauté dès aujourd'hui</p>
+        </header>
+
+        <div class="success-message" id="successMessage">
+            Compte créé avec succès! Redirection en cours...
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="fullName">Nom complet</label>
+                <input type="text" id="fullName" name="fullName" required>
+                <div class="error-message" id="nameError">Veuillez entrer votre nom complet</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="email" id="email" name="email" required>
+                <div class="error-message" id="emailError">Veuillez entrer une adresse email valide</div>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Numéro de téléphone</label>
+                <input type="tel" id="phone" name="phone" required>
+                <div class="error-message" id="phoneError">Veuillez entrer un numéro valide</div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Pays</label>
+                <select id="country" name="country" required>
+                    <option value="">Sélectionnez votre pays</option>
+                    <option value="Congo">Congo</option>
+                    <option value="France">France</option>
+                    <option value="Sénégal">Sénégal</option>
+                    <option value="Côte d'Ivoire">Côte d'Ivoire</option>
+                    <option value="Gabon">Gabon</option>
+                    <option value="Cameroun">Cameroun</option>
+                    <option value="Autre">Autre</option>
+                </select>
+                <div class="error-message" id="countryError">Veuillez sélectionner votre pays</div>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" required>
+                <div class="password-strength">
+                    <div class="strength-bar" id="strengthBar"></div>
+                </div>
+                <div class="error-message" id="passwordError">Le mot de passe doit contenir au moins 8 caractères</div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirmer le mot de passe</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError">Les mots de passe ne correspondent pas</div>
+            </div>
+
+            <button type="submit" class="submit-btn">Créer mon compte</button>
+        </form>
+
+        <div class="login-link">
+            Déjà un compte? <a href="connexion.html">Connectez-vous ici</a>
+        </div>
+    </div>
+
+    <script>
+        // Éléments du DOM
+        const registerForm = document.getElementById('registerForm');
+        const successMessage = document.getElementById('successMessage');
+        const strengthBar = document.getElementById('strengthBar');
+
+        // Vérification de la force du mot de passe
+        document.getElementById('password').addEventListener('input', function(e) {
+            const password = e.target.value;
+            let strength = 0;
+            
+            // Longueur minimale
+            if (password.length >= 8) strength += 20;
+            
+            // Contient des lettres minuscules
+            if (/[a-z]/.test(password)) strength += 20;
+            
+            // Contient des lettres majuscules
+            if (/[A-Z]/.test(password)) strength += 20;
+            
+            // Contient des chiffres
+            if (/[0-9]/.test(password)) strength += 20;
+            
+            // Contient des caractères spéciaux
+            if (/[^a-zA-Z0-9]/.test(password)) strength += 20;
+            
+            // Mise à jour de la barre de force
+            strengthBar.style.width = strength + '%';
+            
+            // Couleur en fonction de la force
+            if (strength < 40) {
+                // strengthBar.style.backgroundColor = var (--error-color);
+            } else if (strength < 80) {
+                strengthBar.style.backgroundColor = 'orange';
+            } else {
+                // strengthBar.style.backgroundColor = var (--success-color);
+            }
+        });
+
+        // Gestion de l'inscription
+        registerForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des valeurs
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const country = document.getElementById('country').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            let isValid = true;
+            
+            // Validation du nom complet
+            if (fullName.length < 3) {
+                document.getElementById('nameError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('nameError').style.display = 'none';
+            }
+            
+            // Validation de l'email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('emailError').style.display = 'none';
+            }
+            
+            // Validation du téléphone
+            const phoneRegex = /^\+?\d{10,15}$/;
+            if (!phoneRegex.test(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+            
+            // Validation du pays
+            if (country === '') {
+                document.getElementById('countryError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('countryError').style.display = 'none';
+            }
+            
+            // Validation du mot de passe
+            if (password.length < 8) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('passwordError').style.display = 'none';
+            }
+            
+            // Validation de la confirmation du mot de passe
+            if (password !== confirmPassword) {
+                document.getElementById('confirmPasswordError').style.display = 'block';
+                isValid = false;
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+            
+            if (isValid) {
+                // Création de l'objet utilisateur
+                const user = {
+                    fullName,
+                    email,
+                    phone,
+                    country,
+                    registrationDate: new Date().toISOString()
+                };
+                
+                // Stockage des données (simulation d'une base de données)
+                let users = JSON.parse(localStorage.getItem('mkmUsers')) || [];
+                
+                // Vérification si l'email existe déjà
+                const emailExists = users.some(u => u.email === email);
+                if (emailExists) {
+                    document.getElementById('emailError').textContent = 'Cet email est déjà utilisé';
+                    document.getElementById('emailError').style.display = 'block';
+                    return;
+                }
+                
+                // Stockage sécurisé du mot de passe (en production, utiliser un hachage)
+                user.passwordHash = btoa(password); // Juste pour l'exemple - en production utiliser bcrypt.js
+                
+                // Ajout du nouvel utilisateur
+                users.push(user);
+                localStorage.setItem('mkmUsers', JSON.stringify(users));
+                
+                // Message de succès
+                successMessage.style.display = 'block';
+                registerForm.style.display = 'none';
+                
+                // Stockage de la session utilisateur
+                sessionStorage.setItem('mkmCurrentUser', JSON.stringify({
+                    fullName,
+                    email
+                }));
+                
+                // Redirection après 2 secondes
+                setTimeout(() => {
+                    window.location.href = 'profil.html'; // Page de profil ou d'accueil
+                }, 2000);
+            }
+        });
+
+        // Gestion du pays - formatage automatique du numéro
+        document.getElementById('country').addEventListener('change', function(e) {
+            const phoneInput = document.getElementById('phone');
+            const country = e.target.value;
+            
+            if (phoneInput.value === '') {
+                switch(country) {
+                    case 'France':
+                        phoneInput.value = '+33';
+                        break;
+                    case 'Congo':
+                        phoneInput.value = '+242';
+                        break;
+                    case 'Sénégal':
+                        phoneInput.value = '+221';
+                        break;
+                    case 'Côte d\'Ivoire':
+                        phoneInput.value = '+225';
+                        break;
+                    case 'Gabon':
+                        phoneInput.value = '+241';
+                        break;
+                    case 'Cameroun':
+                        phoneInput.value = '+237';
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

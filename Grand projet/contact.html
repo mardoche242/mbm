@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - MKM Congo</title>
+    <style>
+        :root {
+            --primary-color: #0123ff; /* Vert Congo */
+            --secondary-color: #0004ff; /* Jaune */
+            --accent-color: #ff8d02; /* Rouge */
+            --light-color: #f5f5f5;
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 15px auto;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .country-flag {
+            width: 40px;
+            height: 25px;
+            vertical-align: middle;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .phone-number {
+            font-size: 1.2rem;
+            margin: 15px 0;
+            color: var(--text-color);
+        }
+        
+        .social-media {
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .social-title {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: color 0.3s, transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: var(--accent-color);
+            transform: scale(1.2);
+        }
+        
+        .whatsapp { color: #25D366; }
+        .facebook { color: #3b5998; }
+        .tiktok { color: #000000; }
+        .youtube { color: #FF0000; }
+        .instagram { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .map-container {
+            height: 400px;
+            margin: 40px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 40px 20px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Trio-Store</div>
+            <h1>Contactez-Nous</h1>
+            <p>Nous sommes à votre écoute 24h/24</p>
+        </div>
+    </header>
+    
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Nos Coordonnées</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Téléphone</h3>
+                    <div class="phone-number">
+                        <img src="https://flagcdn.com/w40/fr.png" class="country-flag" alt="France">
+                        France: +33 6 05 81 25 21
+                    </div>
+                    <div class="phone-number">
+                        <img src="https://flagcdn.com/w40/cg.png" class="country-flag" alt="Congo">
+                        Congo.: +242 06 444 60 47
+                    </div>
+                    <div class="phone-number">
+                        <img src="https://flagcdn.com/w40/sn.png" class="country-flag" alt="Sénégal">
+                        Sénégal: +221 77 726 94 84
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>contact@trio-Store.com</p>
+                    <p>commercial@trio-Store.com</p>
+                    <p>support@trio-Store.com</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Adresse</h3>
+                    <p>Siège Social:</p>
+                    <p>123 Avenue de la République</p>
+                    <p>Brazzaville, Congo</p>
+                </div>
+            </div>
+            
+            <div class="social-media">
+                <h3 class="social-title">Suivez-nous sur les réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#" class="social-icon facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Notre Localisation</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3986.073146237243!2d15.2714153153319!3d-4.263359997012192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a6a31389e6b1e1f%3A0x5d5e5e5e5e5e5e5e!2sBrazzaville%2C%20Congo!5e0!3m2!1sfr!2sfr!4v1620000000000!5m2!1sfr!2sfr" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Trio-Store. Tous droits réservés.</p>
+            <p>Innovation au service du développement africain</p>
+        </div>
+    </footer>
+</body>
+</html>
